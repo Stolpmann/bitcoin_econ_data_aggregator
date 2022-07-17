@@ -1,0 +1,6 @@
+__pycache__/
+venv/
+.idea/
+umbrel_secrets.py
+.ipynb_checkpoints/
+supply.ipynb_checkpoints/
