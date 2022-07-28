@@ -1,6 +1,8 @@
 import paramiko
 import pandas as pd
+import numpy as np
 import umbrel_secrets
+
 
 host = umbrel_secrets.host
 port = umbrel_secrets.port
@@ -23,7 +25,7 @@ print(supply)
 
 supply_df = pd.DataFrame(supply)
 
-supply_df.to_excel('supply.xlsx')
+supply_df.to_csv('csv/supply.csv')
 
 del stdin
 
@@ -36,7 +38,10 @@ stdin, stdout, stderr = ssh.exec_command(best_block_command)
 best_block_hash = stdout.readlines()
 
 print(best_block_hash)
+
 best_block_df = pd.DataFrame(best_block_hash)
+
+best_block_df.to_csv('csv/best_block.csv')
 
 
 del stdin
@@ -55,6 +60,9 @@ get_block_hash = stdout.readlines()
 print(get_block_hash)
 get_block_df = pd.DataFrame(get_block_hash)
 
+get_block_df.to_csv('csv/get_block_hash.csv')
+
+
 del stdin
 
 
@@ -71,6 +79,9 @@ chain_stats = stdout.readlines()
 
 print(chain_stats)
 chain_stats_df = pd.DataFrame(chain_stats)
+
+chain_stats_df.to_csv('csv/chain_stats.csv')
+
 
 del stdin
 
@@ -89,6 +100,9 @@ difficulty = stdout.readlines()
 print(difficulty)
 difficulty_df = pd.DataFrame(difficulty)
 
+difficulty_df.to_csv('csv/difficulty.csv')
+
+
 del stdin
 
 
@@ -105,6 +119,9 @@ chain_size = stdout.readlines()
 
 print(chain_size)
 chain_size_df = pd.DataFrame(chain_size)
+
+chain_size_df.to_csv('csv/chain_size.csv')
+
 
 del stdin
 
@@ -123,6 +140,9 @@ mining = stdout.readlines()
 print(mining)
 mining_df = pd.DataFrame(mining)
 
+mining_df.to_csv('csv/mining.csv')
+
+
 del stdin
 
 
@@ -139,6 +159,9 @@ hashps = stdout.readlines()
 
 print(hashps)
 hashps_df = pd.DataFrame(hashps)
+
+hashps_df.to_csv('csv/hashps.csv')
+
 
 del stdin
 
@@ -157,10 +180,12 @@ mempool = stdout.readlines()
 print(mempool)
 mempool_df = pd.DataFrame(mempool)
 
+mempool_df.to_csv('csv/mempool.csv')
+
+
 del stdin
 
 horizontal_stack = pd.concat([mempool_df, hashps_df, mining_df, chain_size_df, difficulty_df, chain_stats_df, supply_df], axis=1)
-
 
 horizontal_stack.to_excel('supply.xlsx')
 
