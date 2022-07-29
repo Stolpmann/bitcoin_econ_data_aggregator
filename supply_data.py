@@ -30,42 +30,6 @@ supply_df.to_csv('csv/supply.csv')
 del stdin
 
 
-# Best Block Hash
-
-best_block_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getbestblockhash"
-
-stdin, stdout, stderr = ssh.exec_command(best_block_command)
-best_block_hash = stdout.readlines()
-
-print(best_block_hash)
-
-best_block_df = pd.DataFrame(best_block_hash)
-
-best_block_df.to_csv('csv/best_block.csv')
-
-
-del stdin
-
-# Get Block Hash
-
-get_block_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getblockhash"
-
-ssh = paramiko.SSHClient()
-ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect(host, port, username, password)
-
-stdin, stdout, stderr = ssh.exec_command(get_block_command)
-get_block_hash = stdout.readlines()
-
-print(get_block_hash)
-get_block_df = pd.DataFrame(get_block_hash)
-
-get_block_df.to_csv('csv/get_block_hash.csv')
-
-
-del stdin
-
-
 # Get chain tx stats
 
 chain_stats_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getchaintxstats"
@@ -106,26 +70,6 @@ difficulty_df.to_csv('csv/difficulty.csv')
 del stdin
 
 
-# Get chain size in bytes
-
-chain_size_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getmemoryinfo"
-
-ssh = paramiko.SSHClient()
-ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect(host, port, username, password)
-
-stdin, stdout, stderr = ssh.exec_command(chain_size_command)
-chain_size = stdout.readlines()
-
-print(chain_size)
-chain_size_df = pd.DataFrame(chain_size)
-
-chain_size_df.to_csv('csv/chain_size.csv')
-
-
-del stdin
-
-
 # Get mining info
 
 mining_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getmininginfo"
@@ -145,25 +89,6 @@ mining_df.to_csv('csv/mining.csv')
 
 del stdin
 
-
-# Get Network Hash per second
-
-hashps_command = "docker exec bitcoin_bitcoind_1 bitcoin-cli getnetworkhashps -1"
-
-ssh = paramiko.SSHClient()
-ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect(host, port, username, password)
-
-stdin, stdout, stderr = ssh.exec_command(hashps_command)
-hashps = stdout.readlines()
-
-print(hashps)
-hashps_df = pd.DataFrame(hashps)
-
-hashps_df.to_csv('csv/hashps.csv')
-
-
-del stdin
 
 
 # Get mempool info
