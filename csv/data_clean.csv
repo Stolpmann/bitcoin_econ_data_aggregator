@@ -1,0 +1,26 @@
+,0
+Height,746861
+UTXOs,83297354
+Circulating Supply,19105173
+Transactions,49615187
+Disk Size,5048540635
+Total,21000000
+Issuance Remaining,1894877
+time,1658967585
+txcount,752162205
+window_final_block_hash,00000000000000000007d3b83149c88ca7de0c507b8adf9b3add11a936ab5595
+window_final_block_height,746861
+window_block_count,4320
+window_tx_count,7626345
+window_interval,2635936
+txrate,2.893220852099596
+difficulty,27692567959233
+pooledtx,17030
+chain,main
+hashps,207161672195670310912
+size,17032
+bytes,8598075
+usage,41422992
+total_fee,0.51417954
+maxmempool,300000000
+mempoolminfee,0.00001000
